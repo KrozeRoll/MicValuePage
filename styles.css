@@ -1,0 +1,47 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.volume-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.sensitivity-control {
+    margin: 20px 0;
+}
+
+#sensitivityRange {
+    width: 200px;
+}
+
+#colorPicker {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.color-option {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.selected {
+    border-color: black;
+    transform: scale(1.2);
+}
