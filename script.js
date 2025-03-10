@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 default: baseColor = { r: 255, g: 255, b: 255 };
             }
 
-            let brightnessFactor = 50 + (smoothVolume / 100) * (255 - 50);
+            const startbrightness = 20
+            let brightnessFactor = startbrightness + (smoothVolume / 100) * (255 - startbrightness);
             let finalColor = `rgb(
                 ${Math.round((baseColor.r / 255) * brightnessFactor)}, 
                 ${Math.round((baseColor.g / 255) * brightnessFactor)}, 
