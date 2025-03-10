@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 case "red": baseColor = { r: 255, g: 100, b: 100 }; break;
                 case "purple": baseColor = { r: 150, g: 100, b: 255 }; break;
                 case "cyan": baseColor = { r: 100, g: 255, b: 255 }; break;
+                case "pink": baseColor = { r: 255, g: 192, b: 203 }; break;
                 default: baseColor = { r: 255, g: 255, b: 255 };
             }
 
