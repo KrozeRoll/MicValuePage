@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const colorPicker = document.getElementById("colorPicker");
     const sensitivityRange = document.getElementById("sensitivityRange");
     const sensitivityValue = document.getElementById("sensitivityValue");
+
+    let savedSensitivity = localStorage.getItem("sensitivity") || "10";
     let selectedColor = localStorage.getItem("selectedColor") || "white";
+
+    sensitivityRange.value = savedSensitivity;
+    sensitivityValue.innerText = savedSensitivity;
 
     function updateSelectedColor(color) {
         selectedColor = color;
@@ -24,7 +29,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     sensitivityRange.addEventListener("input", () => {
-        sensitivityValue.innerText = sensitivityRange.value;
+        let newValue = sensitivityRange.value;
+        sensitivityValue.innerText = newValue;
+        localStorage.setItem("sensitivity", newValue);
     });
 
     async function setupMicrophone() {
