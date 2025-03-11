@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let savedSensitivity = localStorage.getItem("sensitivity") || "10";
     let selectedColor = localStorage.getItem("selectedColor") || "white";
 
-    // Список цветов в одном месте 🎨
+    // Colors list
     const colors = [
         { name: "white", rgb: { r: 255, g: 255, b: 255 } },
         { name: "yellow", rgb: { r: 255, g: 255, b: 100 } },
