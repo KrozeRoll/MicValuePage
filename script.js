@@ -6,6 +6,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     let savedSensitivity = localStorage.getItem("sensitivity") || "10";
     let selectedColor = localStorage.getItem("selectedColor") || "white";
 
+    // Список цветов в одном месте 🎨
+    const colors = [
+        { name: "white", rgb: { r: 255, g: 255, b: 255 } },
+        { name: "yellow", rgb: { r: 255, g: 255, b: 100 } },
+        { name: "green", rgb: { r: 100, g: 255, b: 100 } },
+        { name: "blue", rgb: { r: 100, g: 100, b: 255 } },
+        { name: "red", rgb: { r: 255, g: 100, b: 100 } },
+        { name: "purple", rgb: { r: 150, g: 100, b: 255 } },
+        { name: "cyan", rgb: { r: 100, g: 255, b: 255 } },
+        { name: "pink", rgb: { r: 255, g: 192, b: 203 } }, 
+        { name: "orange", rgb: { r: 255, g: 200, b: 100 } }
+    ];
+
+    // Color picker buttons
+    colorPicker.innerHTML = colors.map(color =>
+        `<div class="color-option" data-color="${color.name}" style="background-color: rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b});"></div>`
+    ).join("\n");
+
     sensitivityRange.value = savedSensitivity;
     sensitivityValue.innerText = savedSensitivity;
 
@@ -83,19 +101,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             smoothVolume = smoothVolume * 0.9 + volumePercentage * 0.1;
 
-            let baseColor;
-            switch (selectedColor) {
-                case "yellow": baseColor = { r: 255, g: 255, b: 100 }; break;
-                case "green": baseColor = { r: 100, g: 255, b: 100 }; break;
-                case "blue": baseColor = { r: 100, g: 100, b: 255 }; break;
-                case "red": baseColor = { r: 255, g: 100, b: 100 }; break;
-                case "purple": baseColor = { r: 150, g: 100, b: 255 }; break;
-                case "cyan": baseColor = { r: 100, g: 255, b: 255 }; break;
-                case "pink": baseColor = { r: 255, g: 192, b: 203 }; break;
-                default: baseColor = { r: 255, g: 255, b: 255 };
-            }
+            let baseColor = colors.find(c => c.name === selectedColor)?.rgb || { r: 255, g: 255, b: 255 };
 
-            const startbrightness = 20
+            const startbrightness = 20;
             let brightnessFactor = startbrightness + (smoothVolume / 100) * (255 - startbrightness);
             let finalColor = `rgb(
                 ${Math.round((baseColor.r / 255) * brightnessFactor)}, 
