@@ -3,6 +3,7 @@ body {
     text-align: center;
     transition: background-color 0.3s ease;
     color: gainsboro;
+    font-family: monospace;
 }
 
 .container {
